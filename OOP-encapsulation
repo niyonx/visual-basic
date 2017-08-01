@@ -1,0 +1,120 @@
+Public Class counting
+    Private sentence As String
+    Private vowels, consonants, other As Integer
+
+    Public Sub setsentence(ByVal s As String)
+        sentence = s
+    End Sub
+
+    Public Sub display()
+        count()
+        Console.WriteLine("Vowels: {0}, Consonants: {1}, Other characters: {2}, Alphabets > other = {3}", vowels, consonants, other, count)
+    End Sub
+
+    Private Function count() As Boolean
+        For i = 1 To Len(sentence)
+            Select Case Asc(Mid(sentence, i, 1))
+                Case 97 To 122
+                    Select Case Asc(Mid(sentence, i, 1))
+                        Case 97, 101, 105, 111, 117
+                            vowels = vowels + 1
+                        Case Else
+                            consonants = consonants + 1
+                    End Select
+                Case Else
+                    other = other + 1
+            End Select
+        Next
+        If vowels + consonants > other Then
+            count = True
+        Else
+            count = False
+        End If
+    End Function
+End Class
+
+Module HwEncap1
+    Sub main()
+        Dim str As New counting
+        Console.WriteLine("Input sentence")
+        str.setsentence(Console.ReadLine())
+        str.display()
+        Console.ReadLine()
+    End Sub
+End Module
+
+
+Module HwEncap2
+    Public Class motdepasse
+        Private fullnames(10), password(10) As String
+        Private rnd As New Random
+
+        Public Sub New()
+            For i = 1 To 10
+                Console.WriteLine("Input string?")
+                fullnames(i) = Console.ReadLine
+            Next
+        End Sub
+
+        Public Sub gen()
+            For i = 1 To 10
+                For z = 1 To 4
+                    password(i) = password(i) + Mid(fullnames(i), rnd.Next(1, Len(fullnames(i))), 1)
+                Next
+            Next
+        End Sub
+
+        Public Sub display()
+            For i = 1 To 10
+                Console.WriteLine("Password: {0}", password(i))
+            Next
+        End Sub
+    End Class
+
+    Sub main()
+        Dim obj As New motdepasse
+        obj.gen()
+        obj.display()
+        Console.ReadLine()
+    End Sub
+End Module
+
+
+Module HwEncap3
+    Public Class numbering
+        Private number(5) As Integer
+
+        Public Sub New()
+            For i = 1 To 5
+                Console.WriteLine("Input numbers")
+                number(i) = Console.ReadLine
+            Next
+        End Sub
+
+        Public Sub display()
+            For i = 1 To 5
+                message(number(i))
+            Next
+        End Sub
+
+        Private Sub message(ByVal msg As Integer)
+            Select Case msg
+                Case Is < 21
+                    Console.WriteLine("{0} is small", msg)
+                Case 21 To 40
+                    Console.WriteLine("{0} is normal", msg)
+                Case 41 To 75
+                    Console.WriteLine("{0} is big", msg)
+                Case Is > 75
+                    Console.WriteLine("{0} is too big", msg)
+            End Select
+        End Sub
+    End Class
+
+    Sub main()
+        Dim numba As New numbering
+        Console.WriteLine()
+        numba.display()
+        Console.ReadLine()
+    End Sub
+End Module
