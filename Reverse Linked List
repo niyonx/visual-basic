@@ -1,0 +1,18 @@
+Dim s, s2 as string = console.readline
+			Dim pos, i, num as integer
+			
+			pos = instr (s, "-1")
+			s = mid (s,1, pos-1)
+			
+			s = " " + s
+			
+			' 1 2 3 4
+			Do
+			pos = instr (s, " ")
+			s2 = " " + mid (s, 1, pos-1) + s2
+			s = mid ( s, pos + 1, len (s) - pos)
+			Loop Until s = ""
+			
+			s2 = mid (s2, 2, len (s2) -1)
+			
+			console.writeline (s2)
