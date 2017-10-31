@@ -1,0 +1,16 @@
+Public Sub Main()
+			Dim n, i, sum as integer
+			Do
+				n = console.readline
+			Loop until n >=0 AND n <= 12
+			
+			console.writeline (nfac (n))
+		End Sub
+		
+		Function nfac (byval n as integer) As integer
+			If n = 1 Then
+				return 1
+			Else
+				return n * nfac (n-1)
+			End If
+		End Function
