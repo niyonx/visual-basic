@@ -1,0 +1,12 @@
+Dim i as integer
+			Dim n as integer
+			Dim s as string
+			
+			Do
+				n = console.readline ()
+			Loop until n >= -1000 AND n <= 1000
+			for i = 0 to n
+				s = s + Cstr (2^i) + ","
+			next
+			s = mid (s, 1, len (s)-1)
+			Console.writeline (s)
