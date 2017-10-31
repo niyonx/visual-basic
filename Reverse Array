@@ -1,0 +1,27 @@
+Dim n, i, pos,pos2 as integer
+			Dim si, sf as string
+			Do
+				n = console.readline
+			Loop Until n >=0 AND n <= 100
+			Dim array (n-1) as Integer
+			
+		    For i = 0 to (n-1)
+		    array (i) = 0
+		    Next
+		    
+			si = console.readline + " "
+			'1 2 3 
+			For i = 0 to (n-1)
+			pos = Instr (si, " ")
+			sf= Mid (si, pos+1, len(si)-pos)
+			array (i) = Cint (mid(si,1,pos-1))
+			si = sf
+			Next
+			
+			si = ""
+			For i = 0 to (n-1)
+				si = si + cstr((array (n-1-i)))+ " "
+			Next
+			si = mid (si, 1, len(si)-1)
+			console.writeline (si)
+		End Sub
