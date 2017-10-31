@@ -1,0 +1,13 @@
+	Dim newstring, newstringtrue as string = ""
+			Dim binary as string
+			Dim i as integer
+			binary = Console.readline
+			For i = 1 to len (binary)
+			newstring= mid(binary,i, 1)
+				If newstring = "1" then
+					newstringtrue = newstringtrue + "0" 
+				Else
+					newstringtrue = newstringtrue + "1"
+				End If
+			Next
+			Console.writeline (newstringtrue)
