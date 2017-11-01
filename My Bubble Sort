@@ -1,0 +1,40 @@
+Dim rnd as New Random
+			Dim instring, outstring, midstring as String
+			Dim array (6), j, i, temp as integer
+			Dim bool as boolean = false
+			
+			For i = 1 to 6 
+				array (i) = rnd.next (1,100)
+				instring = instring + cstr (array (i)) + " "
+			Next
+			
+			Console.writeline ("I. " +instring)
+			
+			Do
+				j = j + 1
+				bool = true
+				For i = 1 to (6 - j)
+					While array (i) > array (i+1)
+						temp = array(i)
+						array (i) = array (i+1)
+						array (i+1) = temp
+					If i >1 Then
+						bool = false
+					End if
+					End while 
+				Next
+				midstring = ""
+				For i = 1 to 6
+					midstring = midstring + cstr(array (i)) + " "
+				Next
+				
+				If bool = false
+					console.writeline (cstr (j) + ". " + midstring)
+				End If
+			Loop Until bool = true
+				
+			For i = 1 to 6
+				outstring = outstring + cstr (array (i)) + " "
+			Next
+		
+			Console.writeline ("O. " + outstring)
