@@ -1,0 +1,86 @@
+	Dim n, m, i, k, j, l, pos as integer
+	 		Dim instring as string
+	 		Dim bool as boolean = false
+	 		
+	 		Do
+	 			n = console.readline
+	 		Loop Until n >=1 AND n <= 100
+	 		Dim arrayone (n) as Integer
+	 		
+	 		instring = console.readline () + " "
+	 		Do
+	 		If bool = true
+	 			instring = console.readline + " "
+	 			bool = false
+	 			i = 0
+	 		End If
+	 		i = i + 1
+	 			pos = instr (instring, " ")
+	 			If cint (mid (instring, 1, pos-1)) <= 100000 OR cint (mid (instring, 1, pos-1)) >= 1
+	 				arrayone (i) = cint (mid (instring, 1, pos -1))
+	 				instring = mid (instring, pos + 1, len(instring) - pos)
+	 			Else
+	 				bool = true
+	 			End If
+	 		Loop until i = n
+	 		
+	 		Do
+	 			m = console.readline
+	 		Loop Until m >=1 AND m <= 100
+	 		Dim arraytwo (m) as integer
+	 		i = 0
+	 		
+	 		instring = console.readline () + " "
+	 		Do
+	 		If bool = true
+	 			instring = console.readline + " "
+	 			bool = false
+	 			i = 0
+	 		End If
+	 		i = i + 1
+	 			pos = instr (instring, " ")
+	 			If cint (mid (instring, 1, pos-1)) <= 100000 OR cint (mid (instring, 1, pos-1)) >= 1
+	 				arraytwo (i) = cint (mid (instring, 1, pos -1))
+	 				instring = mid (instring, pos + 1, len(instring) - pos)
+	 			Else
+	 				bool = true
+	 			End If
+	 		Loop until i = m
+	 		
+	 		k = console.readline ()
+	 		Dim arrayx (n+m) as integer
+	 		For i = 1 to (n+m)
+	 			arrayx (i) = 0
+	 		Next
+	 		
+	 		i = 1
+	 		j = 1
+	 		l = 1
+	 		Do 
+	 			If arrayone (i) < arraytwo (j)
+	 				arrayx (l) = arrayone (i)
+	 				If i < n 
+	 					i = i + 1
+	 				Else
+	 					For j = j to m
+	 						l = l + 1
+	 						arrayx (l) = arraytwo (j)
+	 					Next
+	 					l = n + m - 1
+	 				End if
+	 			Else
+	 				arrayx (l) = arraytwo (j)
+	 				If j < m
+	 					j = j + 1
+	 				Else
+	 					For i = i to n
+	 						l = l + 1
+	 						arrayx (l) = arrayone (i)
+	 					Next
+	 					l = n + m - 1
+	 				End if
+	 			End If
+	 			l = l + 1
+	 		Loop Until (l = n + m)
+	 		
+	 		Console.writeline (arrayx (k))
